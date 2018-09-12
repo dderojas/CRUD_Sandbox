@@ -1,0 +1,28 @@
+{
+  "name": "crud_sandbox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dderojas/CRUD_Sandbox.git"
+  },
+  "author": "Don de Rojas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dderojas/CRUD_Sandbox/issues"
+  },
+  "homepage": "https://github.com/dderojas/CRUD_Sandbox#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "jquery": "^3.3.1",
+    "mysql": "^2.16.0",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
+    "axios": "^0.18.0"
+  }
+}
