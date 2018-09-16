@@ -13,6 +13,7 @@ class App extends React.Component {
   render() {
     return(<div>
       <h1>SANDBOX</h1>
+      <p>test</p>
     </div>)
   }
 }
