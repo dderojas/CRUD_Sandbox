@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
+import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
@@ -8,6 +9,13 @@ class App extends React.Component {
     this.state = {
 
     }
+  }
+
+  componentDidMount() {
+    axios.get('/hey')
+    .then(function(something) {
+      console.log(something,'test');
+    });
   }
 
   render() {
