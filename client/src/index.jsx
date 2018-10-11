@@ -7,8 +7,10 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      inputField:''
     }
+    this.handleChange = this.handleChange.bind(this);
+    this.buttonClick = this.buttonClick.bind(this);
   }
 
   componentDidMount() {
@@ -18,10 +20,33 @@ class App extends React.Component {
     });
   }
 
+  handleChange(e) {
+    e.preventDefault();
+    this.setState({
+      inputField: e.target.value
+    });
+  }
+
+  buttonClick(e) {
+    axios.post('/yo', this.state.inputField)
+    .then(function(response) {
+      console.log(response,'test');
+    })
+    .catch(function(err) {
+      console.log(err,'failed to post');
+    });
+
+    this.setState({
+      inputField:''
+    });
+  }
+
   render() {
     return(<div>
       <h1>SANDBOX</h1>
       <p>test</p>
+      <input type="text" value={this.state.inputField} onChange={this.handleChange}></input>
+      <button onClick={this.buttonClick}>testButton</button>
     </div>)
   }
 }

@@ -13,10 +13,10 @@ const sequelize = new Sequelize('donDataBase','root','', {
 });
 
 const User = sequelize.define('user', {
-  newColumn: {
+  firstName: {
     type: Sequelize.STRING
   },
-  secondColumn: {
+  lastName: {
     type: Sequelize.STRING
   }
 });
@@ -30,11 +30,6 @@ User.sync({force: true}).then(() => {
   });
 });
 
-User.findAll()
-.then(users => {
-  console.log(users, 'we did it!');
-});
-
 sequelize
 .authenticate()
 .then(() => {
@@ -44,4 +39,4 @@ sequelize
   console.log(`can't connect to database`, err);
 });
 
-module.exports.User = User;
+module.exports = User;
