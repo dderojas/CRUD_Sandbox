@@ -14,9 +14,12 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/hey')
-    .then(function(something) {
-      console.log(something,'test');
+    axios.get('/getTest')
+    .then(function(response) {
+      console.log(response,'test');
+    })
+    .catch(function(err) {
+      console.log(err, 'failed to get');
     });
   }
 
@@ -28,7 +31,7 @@ class App extends React.Component {
   }
 
   buttonClick(e) {
-    axios.post('/yo', this.state.inputField)
+    axios.post('/postTest', this.state.inputField)
     .then(function(response) {
       console.log(response,'test');
     })
