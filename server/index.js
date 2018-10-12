@@ -7,10 +7,6 @@ app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json());
 
 app.get('/getTest', function(req, res) {
-  // dbTest.findAll()
-  // .then(users => {
-  //   console.log('beginning', users, 'end, we did it!');
-  // });
   console.log('getTest success', req.body);
   res.status(200).send('all good with getTest');
 });
