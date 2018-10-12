@@ -17,6 +17,17 @@ app.get('/getTest', function(req, res) {
 
 app.post('/postTest', function(req, res) {
   console.log('postTest success', req.body);
+  dbTest.update({firstName: req.body.inputField}, {
+    where: {
+      id: 1
+    }
+  })
+  .then((res) => {
+    console.log(res,'got promise')
+  })
+  .catch((err) => {
+    console.log(err,'woops');
+  });
   res.status(200).send('all good with postTest');
 });
 

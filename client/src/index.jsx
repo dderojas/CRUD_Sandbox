@@ -31,7 +31,11 @@ class App extends React.Component {
   }
 
   buttonClick(e) {
-    axios.post('/postTest', this.state.inputField)
+    e.preventDefault();
+    var input = Object.assign({}, this.state);
+    console.log(input, 'heyo');
+
+    axios.post('/postTest', input)
     .then(function(response) {
       console.log(response,'test');
     })
