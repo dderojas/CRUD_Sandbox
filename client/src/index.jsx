@@ -7,7 +7,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputField:''
+      firstName:'',
+      lastName:''
     }
     this.handleChange = this.handleChange.bind(this);
     this.buttonClick = this.buttonClick.bind(this);
@@ -21,12 +22,15 @@ class App extends React.Component {
     .catch(function(err) {
       console.log(err, 'failed to get');
     });
+    // get updated first and last names
   }
 
   handleChange(e) {
     e.preventDefault();
+    console.log(e.target.value,'what is target');
+    var {name, value} = e.target;
     this.setState({
-      inputField: e.target.value
+      [name]: value
     });
   }
 
@@ -43,15 +47,19 @@ class App extends React.Component {
     });
 
     this.setState({
-      inputField:''
+      firstName:'',
+      lastName:''
     });
   }
 
   render() {
     return(<div>
       <h1>SANDBOX</h1>
-      <p>test</p>
-      <input type="text" value={this.state.inputField} onChange={this.handleChange}></input>
+      <p>First Name</p>
+      <input name='firstName' type="text" value={this.state.firstName} onChange={this.handleChange}></input>
+      <p>Last Name</p>
+      <input name='lastName' type="text" value={this.state.lastName} onChange={this.handleChange}></input>
+      <br></br>
       <button onClick={this.buttonClick}>testButton</button>
     </div>)
   }

@@ -13,18 +13,34 @@ app.get('/getTest', function(req, res) {
 
 app.post('/postTest', function(req, res) {
   console.log('postTest success', req.body);
-  dbTest.update({firstName: req.body.inputField}, {
+
+  dbTest.findOrCreate({
     where: {
-      id: 1
+      firstName: req.body.firstName,
+      lastName: req.body.lastName
     }
   })
-  .then((res) => {
-    console.log(res,'got promise')
-  })
-  .catch((err) => {
-    console.log(err,'woops');
+  .spread((user, created) => {
+    console.log(user.get({
+      plain: true
+    }))
+    console.log(created,'createTest');
   });
   res.status(200).send('all good with postTest');
+});
+
+app.patch('/patchTest', function(req, res) {
+  // dbTest.update({firstName: req.body.inputField}, {
+  //   where: {
+  //     id: 1
+  //   }
+  // })
+  // .then((res) => {
+  //   console.log(res,'got promise')
+  // })
+  // .catch((err) => {
+  //   console.log(err,'woops');
+  // });
 });
 
 app.listen(3000, function() {
