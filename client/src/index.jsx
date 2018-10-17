@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import axios from 'axios';
+import NamesList from './components/NamesList.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class App extends React.Component {
     .catch(function(err) {
       console.log(err, 'failed to get');
     });
-    // get updated first and last names
+    // how to save data after server/client shuts off
   }
 
   handleChange(e) {
@@ -65,6 +66,9 @@ class App extends React.Component {
       <br></br>
       <button onClick={this.buttonClick}>testButton</button>
       <br></br>
+      <div>{this.state.updatedNames.map((names) => {
+        return <NamesList person={names.firstName}/>
+      })}</div>
     </div>)
   }
 }

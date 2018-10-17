@@ -10,8 +10,6 @@ app.get('/getTest', function(req, res) {
   console.log('getTest success');
   dbTest.findAll()
   .then((names) => {
-    // console.log(names,'the stuff?');
-    // res.json(names);
     res.status(200).send(names);
   })
   .catch((err) => {
@@ -20,7 +18,7 @@ app.get('/getTest', function(req, res) {
 });
 
 app.post('/postTest', function(req, res) {
-  console.log('postTest success', req.body);
+  console.log('postTest is here', req.body);
 
   dbTest.findOrCreate({
     where: {

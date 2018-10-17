@@ -1,7 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
-const namesList = props => (
-  <p>{this.props}</p>
-
+const NamesList = (props) => (
+  <div>{props.person}</div>
 );
+
+export default NamesList;
