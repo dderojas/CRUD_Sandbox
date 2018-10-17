@@ -7,8 +7,16 @@ app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json());
 
 app.get('/getTest', function(req, res) {
-  console.log('getTest success', req.body);
-  res.status(200).send('all good with getTest');
+  console.log('getTest success');
+  dbTest.findAll()
+  .then((names) => {
+    // console.log(names,'the stuff?');
+    // res.json(names);
+    res.status(200).send(names);
+  })
+  .catch((err) => {
+    res.status(400).json(err);
+  });
 });
 
 app.post('/postTest', function(req, res) {

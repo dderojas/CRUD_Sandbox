@@ -7,8 +7,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName:'',
-      lastName:''
+      firstName: '',
+      lastName: '',
+      updatedNames: []
     }
     this.handleChange = this.handleChange.bind(this);
     this.buttonClick = this.buttonClick.bind(this);
@@ -16,8 +17,11 @@ class App extends React.Component {
 
   componentDidMount() {
     axios.get('/getTest')
-    .then(function(response) {
-      console.log(response,'test');
+    .then((response) => {
+      console.log(response,'response data');
+      this.setState({
+        updatedNames: response.data
+      });
     })
     .catch(function(err) {
       console.log(err, 'failed to get');
@@ -27,7 +31,6 @@ class App extends React.Component {
 
   handleChange(e) {
     e.preventDefault();
-    console.log(e.target.value,'what is target');
     var {name, value} = e.target;
     this.setState({
       [name]: value
@@ -61,6 +64,7 @@ class App extends React.Component {
       <input name='lastName' type="text" value={this.state.lastName} onChange={this.handleChange}></input>
       <br></br>
       <button onClick={this.buttonClick}>testButton</button>
+      <br></br>
     </div>)
   }
 }
