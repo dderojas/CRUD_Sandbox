@@ -67,7 +67,7 @@ class App extends React.Component {
       <button onClick={this.buttonClick}>testButton</button>
       <br></br>
       <div>{this.state.updatedNames.map((names) => {
-        return <NamesList person={names.firstName}/>
+        return <NamesList lastName={names.lastName} firstName={names.firstName}/>
       })}</div>
     </div>)
   }
